@@ -13,11 +13,18 @@ To run this simulation on your local machine:
 4.  Find Instr_Mem, and edit it the codes in hexcimal.
 5.  Enable ticks (Ctrl+K) to start the clock cycle.
 
-R type:						                  I type:                                     J type:
-Bits (3 – 5): Write register			  Bits (3 – 5): Write register		            Bits (12-15): Operation code
-Bits (6 – 8): Read register 1			  Bits (6 – 8): Read register 1               Bits (6 – 8): Immediate number X
-Bits (9 - 11): Read register 2			Bits (12 - 15): Operation code
-Bits (12 - 15): Operation code			Bits (0 – 2,9 – 11): Immediate number
+## Instruction Set Architecture (ISA)
+
+### Instruction Formats
+The processor uses a 16-bit instruction width with three primary formats:
+
+| Type | Opcode (12-15) | Read Reg 2 (9-11) | Read Reg 1 (6-8) | Write Reg (3-5) | Immediate / Other |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **R-Type** | Opcode | Read 2 | Read 1 | Write Reg | (0-2) Unused |
+| **I-Type** | Opcode | Imm (9-11) | Read 1 | Write Reg | Imm (0-2) |
+| **J-Type** | Opcode | -- | Imm X (6-8) | -- | -- |
+
+*(Note: For I-Type, the Immediate value is split between bits 9-11 and 0-2)*
 
 ##Supported Instruction
 Instruction  Opcode
