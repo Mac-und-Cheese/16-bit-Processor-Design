@@ -22,25 +22,28 @@ The processor uses a 16-bit instruction width with three primary formats:
 | :--- | :---: | :---: | :---: | :---: | :--- |
 | **R-Type** | Opcode | Read 2 | Read 1 | Write Reg | (0-2) Unused |
 | **I-Type** | Opcode | Imm (9-11) | Read 1 | Write Reg | Imm (0-2) |
-| **J-Type** | Opcode | -- | Imm X (6-8) | -- | -- |
+| **J-Type** | Opcode | -- | Imm (6-8) | -- | -- |
 
 *(Note: For I-Type, the Immediate value is split between bits 9-11 and 0-2)*
 
-##Supported Instruction
-Instruction  Opcode
-li           1001
-add          0000
-and          0001
-or           0010
-load         0110
-store        0111
-move         1000
-addi         0011
-andi         0100
-ori          0101
-ble          1010
-bne          1011
-jump         1100
-call         1101
-rtn          1110
-halt         1111
+### Supported Instructions & Opcodes
+Below is the full list of supported operations and their corresponding 4-bit binary opcodes.
+
+| Instruction | Opcode | Description |
+| :--- | :---: | :--- |
+| **add** | `0000` | Add contents of two registers |
+| **and** | `0001` | Bitwise AND |
+| **or** | `0010` | Bitwise OR |
+| **addi** | `0011` | Add Immediate |
+| **andi** | `0100` | Bitwise AND Immediate |
+| **ori** | `0101` | Bitwise OR Immediate |
+| **load** | `0110` | Load word from memory |
+| **store** | `0111` | Store word to memory |
+| **move** | `1000` | Move data between registers |
+| **li** | `1001` | Load Immediate (16-bit constant) |
+| **ble** | `1010` | Branch if Less or Equal |
+| **bne** | `1011` | Branch if Not Equal |
+| **jump** | `1100` | Unconditional Jump |
+| **call** | `1101` | Function Call |
+| **rtn** | `1110` | Return from function |
+| **halt** | `1111` | Stop execution |
